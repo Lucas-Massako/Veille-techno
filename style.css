@@ -1,29 +1,199 @@
-body {
-    font-family: Arial, sans-serif;
-    margin: 20px;
-    background-color: #f4f4f4;
+/* Réinitialisation */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
 }
+
+/* Arrière-plan néon sombre */
+body {
+    background: linear-gradient(135deg, #450123, #4400ffe7, #000000);
+    background-size: cover;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    overflow-x: hidden;
+}
+
+/* Effet flou et ambiance néon */
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('reversebg.jpg') center/cover no-repeat;
+    filter: blur(12px) brightness(0.5);
+    z-index: -1;
+}
+
+/* Contenu principal */
+.container {
+    background: rgba(255, 255, 255, 0.08);
+    padding: 20px;
+    border-radius: 10px;
+    backdrop-filter: blur(8px);
+    box-shadow: 0 0 20px rgba(255, 0, 127, 0.3);
+    max-width: 600px;
+    animation: fadeIn 1s ease-in-out;
+}
+
+/* NAVBAR STYLES */
+nav {
+    background: rgba(0, 0, 0, 0.4); /* Fond semi-transparent */
+    backdrop-filter: blur(10px); /* Effet flou */
+    padding: 10px 20px;
+    border-radius: 15px;
+    text-align: center;
+    margin: 20px auto;
+    max-width: 800px;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: space-around;
+}
+
+nav li {
+    display: inline;
+}
+
+nav a {
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.2em;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 10px;
+    transition: 0.3s;
+}
+
+/* Effet au survol */
+nav a:hover {
+    background: linear-gradient(135deg, #ff007f, #4400ff);
+    color: white;
+}
+
 
 h1 {
-    text-align: center;
-}
-
-#rss-feed {
-    max-width: 800px;
-    margin: auto;
-    background: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-}
-
-.article {
-    padding: 10px;
-    border-bottom: 1px solid #ddd;
-}
-
-.article a {
-    text-decoration: none;
-    color: #007BFF;
+    font-size: 2.5em;
     font-weight: bold;
+    text-align: center;
+    padding: 20px;
+    border-radius: 15px;
+    background: rgba(0, 0, 0, 0.4); /* Fond sombre semi-transparent */
+    backdrop-filter: blur(10px); /* Effet de flou */
+    display: inline-block;
+    margin: 20px auto;
+}
+
+/* Style spécial pour le dégradé sur "Ma veille" */
+h1 span {
+    background: linear-gradient(135deg, #ff007f, #4400ff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+/* "Technologique" reste blanc */
+h1 .white-text {
+    color: white;
+}
+
+/* Titres */
+ h2 {
+    color: #ff007f;
+    text-shadow: 0 0 12px rgba(255, 0, 127, 0.9);
+    margin-bottom: 15px;
+}
+
+/* Encadré noir autour des articles */
+.article {
+    background: rgba(0, 0, 0, 0.85);
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(255, 0, 127, 0.4);
+    max-width: 600px;
+    animation: fadeInUp 0.8s ease-in-out;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.article:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 25px rgba(255, 0, 127, 0.6);
+}
+
+/* Liens */
+.article a {
+    color: #ff007f;
+    text-decoration: none;
+    font-weight: bold;
+    display: block;
+    padding: 10px;
+    font-size: 1.2em;
+    transition: text-shadow 0.3s ease;
+}
+
+.article a:hover {
+    text-shadow: 0 0 8px #ff007f;
+}
+
+/* Description des articles */
+.article p {
+    color: #ccc;
+    font-size: 0.9em;
+    line-height: 1.4;
+    margin-top: 5px;
+}
+
+/* Boutons stylés */
+button {
+    background: linear-gradient(135deg, #ff007f, #4400ff);
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    margin-top: 20px;
+    font-size: 1em;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 15px rgba(255, 0, 127, 0.7);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
