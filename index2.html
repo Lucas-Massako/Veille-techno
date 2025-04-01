@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mes articles favoris</title>
+</head>
+<body>
+    <h1>Articles Aimés</h1>
+    <div id="liked-articles"></div>
+
+    <script>
+        function loadLikedArticles() {
+            let savedArticles = JSON.parse(localStorage.getItem("likedArticles")) || [];
+            const container = document.getElementById("liked-articles");
+            container.innerHTML = savedArticles.length ? "" : "<p>Aucun article enregistré.</p>";
+
+            savedArticles.forEach(article => {
+                container.innerHTML += `
+                    <div class="article">
+                        <a href="${article.link}" target="_blank">
+                            ${article.image ? `<img src="${article.image}" alt="Image de l'article">` : ""}
+                            <h3>${article.title}</h3>
+                        </a>
+                        <p>${article.description}</p>
+                        <button onclick="removeArticle('${article.link}')">❌ Retirer</button>
+                    </div>
+                `;
+            });
+        }
+
+        function removeArticle(link) {
+            let savedArticles = JSON.parse(localStorage.getItem("likedArticles")) || [];
+            savedArticles = savedArticles.filter(article => article.link !== link);
+            localStorage.setItem("likedArticles", JSON.stringify(savedArticles));
+            loadLikedArticles(); // Recharger l'affichage
+        }
+
+        loadLikedArticles();
+    </script>
+</body>
+</html>
